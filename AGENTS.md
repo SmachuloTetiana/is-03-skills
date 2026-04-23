@@ -63,8 +63,47 @@ excalidraw-monorepo/
 
 ## Skills
 
-<!-- Add your Agent Skills here during the workshop -->
+Agent skills provide specialized domain knowledge and refined workflows for high-quality outputs. Use the relevant skill when working on specific aspects of the project.
 
-Available skills in this project:
+### Available Skills
 
-- **creating-excalidraw-components** (`.agents/skills/`) — Create React components following Excalidraw's patterns and conventions
+#### 1. Creating Excalidraw Components
+**Location**: `.agents/skills/creating-excalidraw-components/`
+
+Creates React components following Excalidraw's established patterns and architecture. Use when adding new UI components, panels, dialogs, or toolbar items.
+
+**Key points**:
+- Functional components with hooks only (no class components)
+- State updates via `actionManager` only
+- Props interface pattern: `{ComponentName}Props`
+- Colocated tests: `{ComponentName}.test.tsx`
+- Use SCSS modules or CSS custom properties for styling
+- Import types from `packages/excalidraw/types`
+
+#### 2. Analyzing Bundle Size
+**Location**: `.github/skills/analyzing-bundle-size/`
+
+Analyzes bundle size, validates imports, and identifies large dependencies. Use when optimizing bundle size, reviewing PRs with new dependencies, or checking for unauthorized packages.
+
+**Key points**:
+- Run `scripts/check-imports.sh` to verify imports
+- Run `scripts/analyze-deps.sh` for dependency analysis
+- Forbidden dependencies: Redux, Zustand, MobX, Recoil, Jotai, react-konva, fabric.js, pixi.js, @mui/material, antd, chakra-ui
+- Core library must use custom state management only
+
+#### 3. Excalidraw Architecture
+**Location**: `.github/skills/excalidraw-architecture/`
+
+Explains Excalidraw's internal architecture, state flow, rendering pipeline, and monorepo structure. Use when understanding how the system works, making architectural decisions, or debugging state-related issues.
+
+**Key points**:
+- Monorepo with Yarn workspaces
+- Custom `actionManager` for state (NOT Redux/Zustand/MobX)
+- Canvas 2D rendering pipeline (NOT React DOM)
+- Package structure: excalidraw, math, element, common, utils
+- References: State Management, Rendering Pipeline guides
+
+#### 4. Testing
+**Location**: `.github/skills/test/`
+
+Best practices and patterns for testing in the Excalidraw project using Vitest and React Testing Library.
